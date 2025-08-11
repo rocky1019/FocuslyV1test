@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Focusly – Learn Together, Grow Together</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="ills/Ffavi2.png" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="ills/Ffavi2-removebg-preview.png" alt="Focusly Logo" class="logo-icon" />
+      Focusly
+    </div>
+     <div class="nav-buttons">
+      <button class="nav-btn" onclick="goToSignup()">Sign Up</button>
+      <button class="nav-btn outline" onclick="goToLogin()">Log In</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container center">
+    <h1>Welcome to <span class="focusly">Focusly</span> 👋</h1>
+    <p class="tagline">Learn together, grow together.</p>
+
+    <!-- Hero Illustration -->
+    <img src="ills/Flat-Illustration-People-are-studying3-Graphics-7187616-1.jpg" alt="Study Illustration" class="hero-img">
+
+    <!-- CTA Buttons -->
+    <div class="cta-buttons">
+      <button class="cta" onclick="guestContinue()">Continue as Guest</button>
+      <a href="learnmore.html" class="cta outline">Learn More</a>
+    </div>
+  </main>
+  
+  <!-- Your existing main.js -->
+  <script src="js/main.js" defer></script>
+
+  <!-- Persistent Login Check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      // 🔹 Your Firebase config here
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Check if user already logged in
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "home.html"; // Redirect to dashboard
+      }
+    });
+  </script>
+
+</body>
+</html>
+
