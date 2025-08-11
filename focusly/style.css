@@ -107,14 +107,22 @@ input {
 #taskList li {
   display: flex;
   align-items: center;
-  gap: 8px; /* space between bullet/checkbox and text */
-  list-style-type: none; /* removes default bullet */
+  gap: 8px;
+  list-style-type: none;
+  padding-left: 20px;           /* more left padding to give space for bullet */
+  position: relative;
+    flex-wrap: wrap;              /* allow flex items to wrap */
+  overflow-wrap: anywhere;      /* break words anywhere if needed */
+  max-width: 100%;              /* prevent overflow */
 }
 
 #taskList li::before {
-  content: "•"; /* custom bullet */
-  color: black; /* bullet color */
-  margin-right: 5px;
+  color: black;
+  position: absolute;           /* position bullet absolutely */
+  left: 5px;                   /* place bullet inside padding area */
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
 }
 
 
@@ -668,4 +676,5 @@ body.study-room {
 .remember-me input {
   width: auto;
 }
+
 
